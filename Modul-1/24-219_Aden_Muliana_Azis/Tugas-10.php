@@ -2,6 +2,6 @@
 
 $txt = "Hello world!";
 
-echo strpos($txt, "world");
+echo strrev($txt);
 
 ?>
