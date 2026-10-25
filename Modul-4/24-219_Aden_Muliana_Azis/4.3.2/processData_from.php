@@ -1,57 +1,56 @@
-<form name="myForm" action="processData_form.php" method="POST">
-    <div class="field">
-        <label for="surname">Surname</label>
-        <input type="text" id="surname" name="surname" size="31">
-    </div>
+<?php
+$errors = array();
+$is_submitted = false;
 
-    <div class="field">
-        <label for="email">Email address</label>
-        <input type="email" id="email" name="email" size="31">
-    </div>
-
-    <div class="field">
-        <label for="passwd">Password</label>
-        <input type="password" id="passwd" name="passwd" size="31">
-    </div>
-
-    <div class="field">
-        <label for="address">Street Address</label>
-        <textarea id="address" name="address" rows="3" cols="22"></textarea>
-    </div>
-
-    <div class="field">
-        <label for="state">State</label>
-        <select id="state" name="state">
-            <option value="-1" selected>[choose your state]</option>
-            <option value="1">Australian Capital Territory</option>
-            <option value="2">Queensland</option>
-            <option value="3">Victoria</option>
-            <option value="4">New South Wales</option>
-            <option value="5">Tasmania</option>
-            <option value="6">South Australia</option>
-            <option value="7">Western Australia</option>
-            <option value="8">Northern Territory</option>
-        </select>
-    </div>
-
-    <input type="hidden" name="country" value="Australia">
-
-    <div class="field">
-        <label>Gender</label>
-        <input type="radio" name="sex" value="male"> Male
-        <input type="radio" name="sex" value="female"> Female
-    </div>
-
-    <div class="field">
-        <label for="vegetarian">Vegetarian?</label>
-        <input type="checkbox" id="vegetarian" name="vegetarian" value="Yes">
-    </div>
-
-    <div class="field">
-        <input type="submit" value="Submit" name="submit">
-        <input type="reset" value="Reset" name="reset">
-    </div>
-</form>
-
-
-
+if (isset($_POST['surname'])) {
+    require 'validate.inc';
+    validateName($errors, $_POST, 'surname');
+    $is_submitted = true;
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <style>
+        body { 
+            background-color: lavender; 
+        }
+        .field { 
+            display: flex; 
+        }
+        label { 
+            width: 160px; 
+            text-align: right; 
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <fieldset style="background-color: white;">
+        <h1>Register</h1>
+        <fieldset style="background-color: lavender;">
+            <legend>Person Details</legend>
+            
+            <?php
+            if ($is_submitted) {
+                if ($errors) {
+                    echo '<div style="margin-left: 180px; color: red;">';
+                    echo '<b>Invalid, correct the following errors:</b><br/>';
+                    foreach ($errors as $field => $error) {
+                        echo "- $field $error<br/>";
+                    }
+                    echo '</div><br/>';
+                } else {
+                    echo '<div style="margin-left: 180px; color: green; font-weight: bold; margin-bottom: 10px;">Form submitted successfully with no errors</div>';
+                }
+            }
+            
+            include 'form.inc';
+            ?>
+            
+        </fieldset>
+    </fieldset>
+</body>
+</html>
