@@ -1,17 +1,18 @@
+
 <form name="myForm" action="processData_form.php" method="POST">
     <div class="field">
         <label for="surname">Surname</label>
-        <input type="text" id="surname" name="surname" size="31">
+        <input type="text" id="surname" name="surname" size="31" />
     </div>
 
     <div class="field">
         <label for="email">Email address</label>
-        <input type="email" id="email" name="email" size="31">
+        <input type="text" id="email" name="email" size="31" />
     </div>
 
     <div class="field">
         <label for="passwd">Password</label>
-        <input type="password" id="passwd" name="passwd" size="31">
+        <input type="password" id="passwd" name="passwd" size="31" />
     </div>
 
     <div class="field">
@@ -34,24 +35,25 @@
         </select>
     </div>
 
-    <input type="hidden" name="country" value="Australia">
+    <div class="field">
+        <input type="hidden" name="country" value="Australia" />
+    </div>
 
     <div class="field">
         <label>Gender</label>
-        <input type="radio" name="sex" value="male"> Male
-        <input type="radio" name="sex" value="female"> Female
+        <input type="radio" name="sex" value="male" /> Male
+        <input type="radio" name="sex" value="female" /> Female
     </div>
 
     <div class="field">
         <label for="vegetarian">Vegetarian?</label>
-        <input type="checkbox" id="vegetarian" name="vegetarian" value="Yes">
+        <input type="checkbox" id="vegetarian" name="vegetarian" value="Yes" />
     </div>
 
     <div class="field">
-        <input type="submit" value="Submit" name="submit">
-        <input type="reset" value="Reset" name="reset">
+        <label>&nbsp;</label>
+        <input type="submit" value="Submit" name="submit" />
+        <input type="reset" value="Reset" name="reset" />
     </div>
 </form>
-
-
 
